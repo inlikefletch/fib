@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>get-n-fibonacci-numbers</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<script>
+function jsget(){
+	//get n from form
+	var n = document.getElementById('n').value;
+	//check if n is an interger
+	if (n % 1 === 0){
+		//get if n is less than 2
+		if (n < 2) {
+			//return error
+			document.getElementById("result").innerHTML = "Enter an interger great than one!";
+		}
+		else {
+			//define fibonacci numbers array
+			var fib = [0,1];
+			//for loop returning n fibonacci numbers
+			for (i = 2; i < n; i++) {
+				//append the sum of the last two numbers
+				fib.push(fib[fib.length-1] + fib[fib.length-2]);
+			}
+			//return array
+			document.getElementById("result").innerHTML = fib;
+		}
+	}
+	else {
+		//return error
+		document.getElementById("result").innerHTML = "Enter an interger!";
+	}
+	return false;
+}
+</script>
+</head>
+<body>
+	<a>get-n-fibonacci-numbers</a>
+	<form id="getn" onsubmit="return jsget()">
+		<input type="text" id="n" name="n" value="" size="10"/>
+		<input type="submit" value="get"/>
+	</form>
+	<a id="result"></a>
+</body>
+</html>
